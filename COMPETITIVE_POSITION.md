@@ -27,7 +27,6 @@ reduction—with exact reconstruction and **256.57 aggregate decode fps**.
 | System | Reconstruction | Public evidence | Commercial implication |
 | --- | --- | --- | --- |
 | **Lossless AV1** | Exact in the audited configuration | Direct ChronoField baseline | ChronoField wins all 225 recorded size comparisons and has simultaneous Full-HD size/speed wins |
-| **AV2 v1.0 lossless** | Exact lossless mode is defined in the June 2026 AOMedia specification | Published 29.81%/33.79% BD-rate gains vs AV1 are lossy PSNR-YUV/VMAF results; no public exact Full-HD lossless result was found | Newest serious standard challenger and the highest-priority direct benchmark still to run |
 | **FFV1** | Exact, intra-frame | IETF-standardized preservation codec | Mature archival incumbent, not the compression frontier in the reviewed evidence |
 | **H.264 / H.265 lossless** | Exact in lossless profiles | Traditional exact video baselines | Strong ecosystem, but no reviewed report reproduces ChronoField's complete Full-HD combination |
 | **NeuralLVC (2026)** | Exact YUV420 video; RGB exactness reported for still images | 29.71% of raw YUV420 on nine Xiph CIF sequences; approximately 0.06 fps on NVIDIA GH200 | The most relevant published neural exact-video competitor found, but currently offline-scale |
@@ -57,9 +56,6 @@ That is the category ChronoField is building.
 ## Primary sources
 
 - [NeuralLVC paper](https://arxiv.org/html/2604.03353)
-- [AV2 v1.0 specification](https://av2.aomedia.org/v1.0.0/index.html)
-- [Official AOMedia AV2 release](https://aomedia.org/press%20releases/Alliance-for-Open-Media-Releases-AV2-Codec/)
-- [AV2 evaluation paper](https://arxiv.org/abs/2605.15800)
 - [Microsoft DCVC official repository](https://github.com/microsoft/DCVC)
 - [ByteDance CascadeV official repository](https://github.com/bytedance/CascadeV)
 - [MagicYUV official site](https://www.magicyuv.com/)
