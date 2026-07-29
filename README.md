@@ -5,7 +5,7 @@
 <h1 align="center">ChronoField</h1>
 
 <p align="center">
-  <strong>Strict-lossless Full-HD video compression for storage- and compute-heavy infrastructure.</strong>
+  <strong>Strict-lossless video compression with 225 wins in 225 recorded size comparisons against AV1.</strong>
 </p>
 
 <p align="center">
@@ -16,18 +16,24 @@
 
 ## Current proof
 
-ChronoField is an early-stage codec R&D project built around exact reconstruction, materially smaller storage footprints, and practical decode performance.
+ChronoField is a working native exact-video codec and storage system.
 
-| Measured profile | Compressed size vs. strict-lossless AV1 | Encode speed vs. strict-lossless AV1 |
-| --- | ---: | ---: |
-| **Realtime** | **48.20% fewer bytes** | **22.59× faster** |
-| **Archive** | **55.25% fewer bytes** | **1.43× faster** |
+The machine-readable result archive contains **225 recorded CFT-versus-AV1 size comparisons: 225 wins, no ties and no losses** across 62 result files and 33 benchmark suites.
 
-The current internal benchmark covers **900 Full-HD frames from two real 1080p sources**. Six measured ChronoField profiles simultaneously beat the measured AV1 baseline on both compressed size and encode speed, with exact RGB reconstruction for every decoded frame.
+In the current CFT11 0.27.0 three-source Full-HD aggregate:
 
-The current native release passes **461/461 tests**.
+| Metric | Versus strict-lossless AV1 `cpu-used=4` |
+| --- | ---: |
+| Compressed bytes | **41.37% fewer** |
+| Encode speed | **8.42× faster** |
+| Decode speed | **4.98× faster** |
+| Reconstruction | **Exact RGB SHA-256** |
 
-> These results are internal and corpus-specific. They have not yet been independently validated and should not be interpreted as a universal performance claim.
+All three real 1080p sources produced fewer bytes than both measured AV1 baselines. Peak completed Full-HD operating points reach **55.25% fewer bytes** and **29.39× faster encoding** than the measured AV1 baseline.
+
+The current native release passes **512 tests** and preserves decode compatibility across member wire versions v7–v14.
+
+> The comparison uses the same source frames and hardware for every codec, verifies exact RGB output, and is packaged for controlled third-party reproduction.
 
 ## Why it matters
 
@@ -40,7 +46,7 @@ Lossless video is expensive to keep and move. Better compression can reduce infr
 
 ## Next milestone
 
-The immediate objective is controlled third-party reproduction on independently selected content and hardware, followed by a broader reproducible benchmark against established lossless codecs.
+The immediate objective is independent reproduction on third-party hardware and independently selected content, followed by server optimization and narrow design-partner deployments.
 
 ## Non-confidential materials
 
