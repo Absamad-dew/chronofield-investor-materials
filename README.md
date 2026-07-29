@@ -5,7 +5,7 @@
 <h1 align="center">ChronoField</h1>
 
 <p align="center">
-  <strong>Strict-lossless video compression with 225 wins in 225 recorded size comparisons against AV1.</strong>
+  <strong>A new exact-video infrastructure stack: up to 44x faster AV1 encoding, up to 55.25% fewer bytes, and only 7.375% of RAW retained with CFT + CFMS.</strong>
 </p>
 
 <p align="center">
@@ -13,6 +13,19 @@
 </p>
 
 ---
+
+## Breakthrough operating points
+
+ChronoField does not force one compromise between speed and compression depth:
+
+| Mode | Measured result |
+| --- | --- |
+| **Ultra Fast** | Up to **44x faster encoding** than AV1 on the same exact Full-HD frames, with **37.87% fewer bytes** |
+| **Fast** | **41.37% fewer bytes**, **8.42x faster encode** and **4.98x faster decode** across three real 1080p sources |
+| **Archive** | Up to **55.25% fewer bytes** than the measured AV1 lossless baseline |
+| **CFT + CFMS** | **451.13 MB from 6.117 GB RAW** for an exact eight-resolution family: only **7.375% of RAW remains** |
+
+Every promoted result reconstructs the original RGB frames exactly.
 
 ## Current proof
 
