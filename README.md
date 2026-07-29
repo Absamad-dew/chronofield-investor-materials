@@ -102,6 +102,13 @@ and independently selected content, followed by server and GPU optimization
 and narrow design-partner deployments. No unmeasured server-speed multiplier
 is included in the results above.
 
+## Fundraising
+
+ChronoField is raising a **$500k-$1m pre-seed round**. The minimum round size
+is **$500k**; larger scope is welcome where it supports independent blind
+validation, a reproducible Linux/server and GPU build, third-party corpus
+expansion, IP/FTO work and qualified design-partner evaluations.
+
 ## Non-confidential materials
 
 - [Investor deck — 12 slides](./ChronoField-safe-investor-deck.pdf)
