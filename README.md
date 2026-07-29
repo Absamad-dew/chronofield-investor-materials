@@ -5,7 +5,7 @@
 <h1 align="center">ChronoField</h1>
 
 <p align="center">
-  <strong>A new exact-video infrastructure stack: up to 45.6x faster AV1 encoding, up to 55.25% fewer bytes, and only 7.375% of RAW retained with CFT + CFMS.</strong>
+  <strong>A new exact-video infrastructure stack: 225 AV1 size wins, simultaneous Full-HD size and speed gains, and another 83.65% removed across exact related renditions.</strong>
 </p>
 
 <p align="center">
@@ -23,8 +23,8 @@ ChronoField does not force one compromise between speed and compression depth:
 | **Ultra Fast** | Up to **45.63x faster encoding** than AV1 on the same exact Full-HD frames, with **37.87% fewer bytes** |
 | **Fast** | **41.37% fewer bytes**, **8.42x faster encode** and **4.98x faster decode** across three real 1080p sources |
 | **Archive** | Up to **55.25% fewer bytes** than the measured AV1 lossless baseline |
-| **CFT + CFMS** | **451.13 MB from 6.117 GB RAW** for an exact eight-resolution family: only **7.375% of RAW remains** |
-| **CFMS related-video gate** | **56.26 MB → 20.73 MB** after individual CFT compression: an additional **63.15% reduction**, exact 20/20, **256.57 aggregate decode fps** |
+| **CFT + CFMS** | A complete 20-rendition compact catalog required **7.38 MB instead of 45.14 MB** after individual CFT compression: another **83.65% reduction** |
+| **Full catalog economics** | **34.85× smaller than raw RGB**, exact 20/20, **261 aggregate decode fps**, and all 18 derived renditions added **zero object payload** |
 
 Every promoted result reconstructs the original RGB frames exactly.
 
@@ -50,6 +50,19 @@ lossless member and collection wire formats remain unchanged, the retained
 artifacts remain byte-for-byte stable, and its release gate passes **529
 tests**.
 
+The current CFMS family-storage gate uses two real source excerpts and 20 exact
+related renditions in several deterministic production variants. Independent
+CFT11 compact files required **45.14 MB**; the complete CFMS catalog—including
+manifests and index—required **7.38 MB**, an additional **83.65% reduction**
+after individual compression. All 20 outputs reconstructed exactly, aggregate
+compact decode measured **261 fps**, and the full CFT + CFMS project regression
+passed **598/598 tests**.
+
+This CFMS result targets server-side rendition families created through known
+production transformations—such as ABR ladders, previews, crops and version
+variants. It is not presented as a universal ratio for arbitrary independent
+third-party re-encodes.
+
 > These measurements were collected locally on a Lenovo consumer laptop with
 > an **AMD Ryzen 7 H 255 (8 cores / 16 threads), integrated Radeon 780M and
 > 16 GB of system memory**—not on server-class hardware. Every compared codec
@@ -68,7 +81,8 @@ pixels exactly.
 
 Our review found no public codec report demonstrating the same combination of
 **exact RGB reconstruction, fewer Full-HD bytes than lossless AV1, faster
-encode, faster decode, and a second exact family-storage layer**.
+encode, faster decode, and a second exact family-storage layer that removes
+another 83.65% across a measured 20-rendition production family**.
 
 [Read the non-confidential competitive note →](./COMPETITIVE_POSITION.md)
 

@@ -23,10 +23,19 @@ same host. These are measured laptop results; any server or discrete-GPU
 uplift remains a separate reproduction and optimization milestone.
 
 The separate CFMS family-storage layer then removes redundancy across related
-renditions after the individual streams have already been compressed. In a
-20-rendition exact family benchmark, independent CFT required **56.26 MB** and
-CFMS reduced the physical footprint to **20.73 MB**—an additional **63.15%**
-reduction—with exact reconstruction and **256.57 aggregate decode fps**.
+renditions after the individual streams have already been compressed. In the
+current benchmark—two real source excerpts and 20 exact related renditions in
+several deterministic production variants—independent CFT11 compact files
+required **45.14 MB**. The complete CFMS catalog, including manifests and
+index, required **7.38 MB**: an additional **83.65% reduction after CFT** and
+**34.85× smaller than raw RGB**. All 20 outputs reconstructed exactly,
+aggregate compact decode measured **261 fps**, and all 18 derived renditions
+added zero object payload.
+
+That second-layer result applies to related renditions created through known
+production transformations. It is aimed at ABR ladders, previews, crops and
+version families; it is not a universal ratio for arbitrary independently
+re-encoded external files.
 
 ## What public competitors optimize
 
@@ -41,7 +50,7 @@ reduction—with exact reconstruction and **256.57 aggregate decode fps**.
 | **ByteDance CascadeV** | Generative/lossy | 1024x latent dimensionality reduction; imperfect reconstruction; almost one minute for eight 1024x1024 frames on one NVIDIA A800 | Extreme latent representation by giving up pixel identity |
 | **MagicYUV / UT Video / Lagarith / HuffYUV** | Exact capture/intermediate codecs | Public positioning prioritizes recording and editing throughput | Important speed incumbents, but no reviewed report reproduces the complete ChronoField combination |
 | **Motion JPEG 2000 / JPEG XL sequences** | Exact per-frame lossless coding | Mature image/archive systems with independent frame codestreams | Strong random access, but no native cross-frame redundancy |
-| **ChronoField CFT + CFMS** | Exact RGB plus exact family storage | Direct Full-HD AV1 gates and a separate related-rendition storage gate | Density, practical speed, and cross-rendition economics in one stack |
+| **ChronoField CFT + CFMS** | Exact RGB plus exact family storage | Direct Full-HD AV1 gates; complete 20-rendition CFMS catalog at 7.38 MB vs 45.14 MB independent CFT | Density, practical speed, and cross-rendition economics in one stack |
 
 NeuralLVC and ChronoField have not yet been run on the same corpus, resolution
 or pixel domain, so their compression percentages are not presented as a
@@ -61,7 +70,8 @@ The reviewed competitors are strong on individual axes:
 We found no public result that demonstrates ChronoField's complete
 combination: **exact RGB reconstruction, Full-HD compression advantage over
 lossless AV1, faster encode, faster decode, and an additional exact
-family-storage layer**.
+family-storage layer with a measured 83.65% reduction across a 20-rendition
+production family after individual CFT compression**.
 
 That is the category ChronoField is building.
 
