@@ -50,7 +50,11 @@ lossless member and collection wire formats remain unchanged, the retained
 artifacts remain byte-for-byte stable, and its release gate passes **529
 tests**.
 
-> The comparison uses the same source frames and hardware for every codec, verifies exact RGB output, and is packaged for controlled third-party reproduction.
+> These measurements were collected locally on a Lenovo consumer laptop with
+> an **AMD Ryzen 7 H 255 (8 cores / 16 threads), integrated Radeon 780M and
+> 16 GB of system memory**—not on server-class hardware. Every compared codec
+> used the same host and source frames. Exact RGB output is verified, and the
+> benchmark is packaged for controlled third-party reproduction.
 
 ## Competitive position
 
@@ -79,7 +83,10 @@ Lossless video is expensive to keep and move. Better compression can reduce infr
 
 ## Next milestone
 
-The immediate objective is independent reproduction on third-party hardware and independently selected content, followed by server optimization and narrow design-partner deployments.
+The immediate objective is independent reproduction on third-party hardware
+and independently selected content, followed by server and GPU optimization
+and narrow design-partner deployments. No unmeasured server-speed multiplier
+is included in the results above.
 
 ## Non-confidential materials
 

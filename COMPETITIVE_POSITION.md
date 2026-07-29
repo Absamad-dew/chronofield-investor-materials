@@ -16,6 +16,12 @@ On one measured Full-HD source, the Ultra Fast profile produced **37.87%
 fewer bytes**, encoded **45.63x faster**, and decoded **4.66x faster** than
 the same strict-lossless AV1 baseline.
 
+The ChronoField measurements above were collected on a Lenovo consumer laptop
+with an **AMD Ryzen 7 H 255 (8 cores / 16 threads), integrated Radeon 780M and
+16 GB of system memory**, not on server-class hardware. CFT and AV1 used the
+same host. These are measured laptop results; any server or discrete-GPU
+uplift remains a separate reproduction and optimization milestone.
+
 The separate CFMS family-storage layer then removes redundancy across related
 renditions after the individual streams have already been compressed. In a
 20-rendition exact family benchmark, independent CFT required **56.26 MB** and
@@ -36,6 +42,12 @@ reduction—with exact reconstruction and **256.57 aggregate decode fps**.
 | **MagicYUV / UT Video / Lagarith / HuffYUV** | Exact capture/intermediate codecs | Public positioning prioritizes recording and editing throughput | Important speed incumbents, but no reviewed report reproduces the complete ChronoField combination |
 | **Motion JPEG 2000 / JPEG XL sequences** | Exact per-frame lossless coding | Mature image/archive systems with independent frame codestreams | Strong random access, but no native cross-frame redundancy |
 | **ChronoField CFT + CFMS** | Exact RGB plus exact family storage | Direct Full-HD AV1 gates and a separate related-rendition storage gate | Density, practical speed, and cross-rendition economics in one stack |
+
+NeuralLVC and ChronoField have not yet been run on the same corpus, resolution
+or pixel domain, so their compression percentages are not presented as a
+direct byte-ratio head-to-head. The hardware context is nevertheless material:
+the published NeuralLVC video speed is measured on an NVIDIA GH200, while the
+current ChronoField results are local laptop measurements.
 
 ## Conclusion
 
