@@ -55,12 +55,14 @@ tests**.
 ## Competitive position
 
 Traditional lossless codecs preserve the source but do not demonstrate
-ChronoField's measured Full-HD combination of density and speed. The most
-relevant published neural exact-video competitor we found, NeuralLVC, reports
-approximately **0.06 fps** on CIF video using an NVIDIA GH200. Fast neural
-systems such as Microsoft DCVC optimize lossy rate-distortion, while
-generative systems such as ByteDance CascadeV do not reconstruct the original
-pixels exactly.
+ChronoField's measured Full-HD combination of density and speed. The newly
+released AV2 v1.0 specification includes lossless coding, but we found no
+public exact Full-HD AV2 benchmark demonstrating ChronoField's size/speed
+combination. The most relevant published neural exact-video competitor we
+found, NeuralLVC, reports approximately **0.06 fps** on CIF video using an
+NVIDIA GH200. Fast neural systems such as Microsoft DCVC optimize lossy
+rate-distortion, while generative systems such as ByteDance CascadeV do not
+reconstruct the original pixels exactly.
 
 Our review found no public codec report demonstrating the same combination of
 **exact RGB reconstruction, fewer Full-HD bytes than lossless AV1, faster
