@@ -1,106 +1,58 @@
-<p align="center">
-  <img src="./chronofield-banner.png" alt="ChronoField — exact video and storage compression" width="100%">
-</p>
+# ChronoField
 
-<h1 align="center">ChronoField</h1>
+**A native exact-video codec and a storage system for related production renditions.**
 
-<p align="center">
-  <strong>A new exact-video infrastructure stack: 225 AV1 size wins, simultaneous Full-HD size and speed gains, and another 83.65% removed across exact related renditions.</strong>
-</p>
+I am **Absamad Manturov**, founder of ChronoField. My research connects the codec and native decoder, related-rendition storage and retained size/speed comparisons. The objective is practical: keep the original RGB pixels while reducing storage and processing cost.
 
-<p align="center">
-  <a href="./ChronoField-safe-investor-deck.pdf"><strong>Open the 12-slide investor deck →</strong></a>
-</p>
+[Research case](https://github.com/Absamad-dew/engineering-portfolio/blob/main/research/README.md) · [Обзор на русском](https://github.com/Absamad-dew/engineering-portfolio/blob/main/research/README.ru.md) · [Investor deck](ChronoField-safe-investor-deck.pdf) · [Competitive context](COMPETITIVE_POSITION.md)
 
----
+## Smaller output and faster processing at the same operating point
 
-## Breakthrough operating points
+The retained three-source Full-HD aggregate against strict-lossless AV1 `cpu-used=4` records:
 
-ChronoField does not force one compromise between speed and compression depth:
-
-| Mode | Measured result |
-| --- | --- |
-| **Ultra Fast** | Up to **45.63x faster encoding** than AV1 on the same exact Full-HD frames, with **37.87% fewer bytes** |
-| **Fast** | **41.37% fewer bytes**, **8.42x faster encode** and **4.98x faster decode** across three real 1080p sources |
-| **Archive** | Up to **55.25% fewer bytes** than the measured AV1 lossless baseline |
-| **CFT + CFMS** | A complete 20-rendition compact catalog required **7.38 MB instead of 45.14 MB** after individual CFT compression: another **83.65% reduction** |
-| **Full catalog economics** | **34.85× smaller than raw RGB**, exact 20/20, **261 aggregate decode fps**, and all 18 derived renditions added **zero object payload** |
-
-Every promoted result reconstructs the original RGB frames exactly.
-
-## Current proof
-
-ChronoField is a working native exact-video codec and storage system.
-
-The machine-readable result archive contains **225 recorded CFT-versus-AV1 size comparisons: 225 wins, no ties and no losses** across 62 result files and 33 benchmark suites.
-
-In the retained CFT11 three-source Full-HD aggregate:
-
-| Metric | Versus strict-lossless AV1 `cpu-used=4` |
-| --- | ---: |
+| Metric | ChronoField result |
+|---|---:|
 | Compressed bytes | **41.37% fewer** |
 | Encode speed | **8.42× faster** |
 | Decode speed | **4.98× faster** |
 | Reconstruction | **Exact RGB SHA-256** |
 
-All three real 1080p sources produced fewer bytes than both measured AV1 baselines. Peak completed Full-HD operating points reach **55.25% fewer bytes** and **29.39× faster encoding** than the measured AV1 baseline.
+<img src="media/research-fullhd.svg" alt="Three-source Full-HD aggregate with one AV1 baseline: normalized bytes100 versus58.63, encode1x versus8.42x, decode1x versus4.98x" width="100%">
 
-The current production release is **CFT11 0.28.0** with native decoder v8. Its
-lossless member and collection wire formats remain unchanged, the retained
-artifacts remain byte-for-byte stable, and its release gate passes **529
-tests**.
+All three real 1080p sources produced fewer bytes than both measured AV1 baselines. This joint operating point is relevant to exact-source media, archives, AI/computer-vision datasets and scientific workflows where original pixels matter.
 
-The current CFMS family-storage gate uses two real source excerpts and 20 exact
-related renditions in several deterministic production variants. Independent
-CFT11 compact files required **45.14 MB**; the complete CFMS catalog—including
-manifests and index—required **7.38 MB**, an additional **83.65% reduction**
-after individual compression. All 20 outputs reconstructed exactly, aggregate
-compact decode measured **261 fps**, and the full CFT + CFMS project regression
-passed **598/598 tests**.
+## Storage across related renditions
 
-This CFMS result targets server-side rendition families created through known
-production transformations—such as ABR ladders, previews, crops and version
-variants. It is not presented as a universal ratio for arbitrary independent
-third-party re-encodes.
+Individual compression is one layer. A separate retained family-storage experiment reduced **45.14 MB of independent CFT11 compact files to a 7.38 MB complete CFMS catalog**, including manifests and index. That is an additional **83.65% reduction**, with **20/20 exact outputs** and **261 aggregate compact decode fps**.
 
-> These measurements were collected locally on a Lenovo consumer laptop with
-> an **AMD Ryzen 7 H 255 (8 cores / 16 threads), integrated Radeon 780M and
-> 16 GB of system memory**—not on server-class hardware. Every compared codec
-> used the same host and source frames. Exact RGB output is verified, and the
-> benchmark is packaged for controlled third-party reproduction.
+<img src="media/research-family-storage.svg" alt="Separate related-rendition experiment:45.14MB independent compact files versus7.38MB complete catalog,20exactoutputs" width="100%">
 
-## Competitive position
+This experiment uses two real source excerpts and 20 related outputs generated through known production transformations, such as ABR ladders, previews, crops and version variants. It is a separate population from the Full-HD comparison above. [Scope and competitive position](COMPETITIVE_POSITION.md).
 
-Traditional lossless codecs preserve the source but do not demonstrate
-ChronoField's measured Full-HD combination of density and speed. The most
-relevant published neural exact-video competitor we found, NeuralLVC, reports
-approximately **0.06 fps** on CIF video using an NVIDIA GH200. Fast neural
-systems such as Microsoft DCVC optimize lossy rate-distortion, while
-generative systems such as ByteDance CascadeV do not reconstruct the original
-pixels exactly.
+## Breadth of the retained work
 
-Our review found no public codec report demonstrating the same combination of
-**exact RGB reconstruction, fewer Full-HD bytes than lossless AV1, faster
-encode, faster decode, and a second exact family-storage layer that removes
-another 83.65% across a measured 20-rendition production family**.
+The machine-readable result archive contains **225 recorded CFT-versus-AV1 size comparisons: 225 wins, no ties and no losses**, across 62 result files and 33 benchmark suites.
 
-[Read the non-confidential competitive note →](./COMPETITIVE_POSITION.md)
+The published system is **CFT11 0.28.0 with native decoder v8**. Its release gate passes 529 tests; the combined CFT + CFMS regression passes 598/598. The retained wire formats and artifacts remain unchanged. These are separate release/regression scopes.
 
-## Why it matters
+<details>
+<summary>Additional published operating points</summary>
 
-Lossless video is expensive to keep and move. Better compression can reduce infrastructure cost in:
+| Mode / comparison | Retained result |
+|---|---|
+| Ultra Fast | Up to 45.63× encode speed with 37.87% fewer bytes on the compared exact Full-HD frames |
+| Archive | Up to 55.25% fewer bytes than the measured AV1 lossless baseline |
+| Full family catalog | 34.85× smaller than raw RGB; all 18 derived renditions add zero object payload in the tested family |
 
-- media archives and production pipelines;
-- exact-source and mezzanine storage;
-- AI and computer-vision datasets;
-- scientific, medical, and regulated workflows where reconstruction must be exact.
+These are additional recorded operating points; their maxima are not combined into the common three-source aggregate above.
 
-## Next milestone
+</details>
 
-The immediate objective is independent reproduction on third-party hardware
-and independently selected content, followed by server and GPU optimization
-and narrow design-partner deployments. No unmeasured server-speed multiplier
-is included in the results above.
+## Measurement context and next milestone
+
+Measurements were collected on the same source frames and host: a Lenovo laptop with **AMD Ryzen 7 H 255, 8 cores / 16 threads, integrated Radeon 780M and 16 GB RAM**. Promoted outputs reconstruct the original RGB bytes exactly. The Full-HD table uses strict-lossless AV1 `cpu-used=4`; the rendition-family result has its own complete-catalog baseline.
+
+The next milestone is **controlled independent reproduction on third-party hardware and independently selected content**, followed by server/GPU optimization and design-partner evaluations. [Detailed competitive note](COMPETITIVE_POSITION.md) · [Existing public result snapshot](https://github.com/Absamad-dew/chronofield-investor-materials/blob/e29488e2d1d4932bc94957d0d0c8ac60fff4b4e5/README.md).
 
 ## Fundraising
 
@@ -109,25 +61,13 @@ is **$500k**; larger scope is welcome where it supports independent blind
 validation, a reproducible Linux/server and GPU build, third-party corpus
 expansion, IP/FTO work and qualified design-partner evaluations.
 
-## Engineering portfolio
+## Materials and contact
 
-[Applied products and public engineering work](https://github.com/Absamad-dew/engineering-portfolio) · [Independent open-source measurement toolkit](https://github.com/Absamad-dew/compression-observatory). The toolkit uses standard-library codecs and contains no ChronoField implementation or private benchmark corpus.
+- [Non-confidential investor deck](ChronoField-safe-investor-deck.pdf)
+- [Competitive position](COMPETITIVE_POSITION.md)
+- [Other engineering work](https://github.com/Absamad-dew/engineering-portfolio)
+- [Independent standard-codec measurement tooling](https://github.com/Absamad-dew/compression-observatory)
 
-## Non-confidential materials
+**Absamad Manturov — Founder** · [Email](mailto:absamad.manturov@gmail.com) · [Telegram](https://t.me/Absamad_m)
 
-- [Investor deck — 12 slides](./ChronoField-safe-investor-deck.pdf)
-- [Competitive position — exact, neural and generative codecs](./COMPETITIVE_POSITION.md)
-
-## Disclosure boundary
-
-This repository intentionally contains **no source code, binaries, formulas, dictionaries, bitstream grammar, benchmark corpus, internal architecture, or protected implementation mechanics**.
-
-## Contact
-
-**Absamad Manturov — Founder**
-
-[Email](mailto:absamad.manturov@gmail.com) · [GitHub](https://github.com/Absamad-dew) · [Telegram](https://t.me/Absamad_m)
-
----
-
-<sub>All rights reserved. Publication grants no license to the underlying technology or these materials.</sub>
+The source code, binaries, formulas, dictionaries, bitstream grammar, research corpus, internal architecture and protected implementation mechanics remain private. All rights reserved; publication grants no license to the underlying technology or these materials.
