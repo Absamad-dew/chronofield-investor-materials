@@ -109,6 +109,10 @@ is **$500k**; larger scope is welcome where it supports independent blind
 validation, a reproducible Linux/server and GPU build, third-party corpus
 expansion, IP/FTO work and qualified design-partner evaluations.
 
+## Engineering portfolio
+
+[Applied products and public engineering work](https://github.com/Absamad-dew/engineering-portfolio) · [Independent open-source measurement toolkit](https://github.com/Absamad-dew/compression-observatory). The toolkit uses standard-library codecs and contains no ChronoField implementation or private benchmark corpus.
+
 ## Non-confidential materials
 
 - [Investor deck — 12 slides](./ChronoField-safe-investor-deck.pdf)
